@@ -60,7 +60,7 @@ def call_api(product_id: str, params: dict) -> dict:
     url = f'https://console.handaas.com/api/v1/integrator/call_api/{INTEGRATOR_ID}'
     try:
         response = requests.post(url, data=call_params)
-        return response.json().get("data", "查询为空")
+        return response.json().get("data", None) or response.json().get("msgCN", None)
     except Exception as e:
         return "查询失败"
     
@@ -107,7 +107,7 @@ def store_bigdata_company_restaurant_branches(matchKeyword: str, keywordType: st
 
 
 @mcp.tool()
-def store_bigdata_fuzzy_search(matchKeyword: str, pageIndex: int = None, pageSize: int = None) -> dict:
+def store_bigdata_fuzzy_search(matchKeyword: str, pageIndex: int = 1, pageSize: int = None) -> dict:
     """
     该接口的功能是根据提供的企业名称、人名、品牌、产品、岗位等关键词模糊查询相关企业列表。返回匹配的企业列表及其详细信息，用于查找和识别特定的企业信息。
 
@@ -166,7 +166,7 @@ def store_bigdata_fuzzy_search(matchKeyword: str, pageIndex: int = None, pageSiz
 @mcp.tool()
 def store_bigdata_offline_store_search(ooStoreName: str = None, ooStoreBrandList: str = None, ooStoreCalClassification: str = None,
                          address: str = None, ooStoreStatus: str = None, ooStoreAddressValue: str = None,
-                         hasMobile: str = None, hasPhone: int = None, pageSize: int = None,
+                         hasMobile: str = None, hasPhone: int = None, pageSize: int = 10,
                          ooMinStorePerCapitaConsumption: float = None, ooMaxStorePerCapitaConsumption: float = None,
                          pageIndex: int = None) -> dict:
     """
@@ -226,7 +226,7 @@ def store_bigdata_offline_store_search(ooStoreName: str = None, ooStoreBrandList
 
 
 @mcp.tool()
-def store_bigdata_restaurant_branch_stats(matchKeyword: str, pageIndex: int = None, pageSize: int = None) -> dict:
+def store_bigdata_restaurant_branch_stats(matchKeyword: str, pageIndex: int = 1, pageSize: int = None) -> dict:
     """
     该接口的功能是根据品牌ID获取特定餐饮品牌在各城市及省份的门店分布情况，包括各城市和省份的门店数量统计。此接口可以用于企业内部业务分析，帮助企业了解其门店在不同地域的分布，从而优化资源分配和市场策略。
 
