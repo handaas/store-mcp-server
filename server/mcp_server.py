@@ -119,7 +119,6 @@ def store_bigdata_fuzzy_search(matchKeyword: str, pageIndex: int = 1, pageSize: 
 
     返回参数:
     - total: 总数 类型：int
-    - resultList: 结果列表 类型：list of dict
     - annualTurnover: 年营业额 类型：string
     - formerNames: 曾用名 类型：list of string
     - address: 注册地址 类型：string
@@ -191,7 +190,6 @@ def store_bigdata_offline_store_search(ooStoreName: str = None, ooStoreBrandList
     - pageIndex: 页码 类型：int - 从1开始
 
     返回参数:
-    - resultList: 结果列表 类型：list of dict
     - total: 总数 类型：int
     - ooStoreId: 店铺id 类型：string
     - hasContact: 有无联系方式 类型：int - 1：有，0：无

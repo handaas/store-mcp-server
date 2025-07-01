@@ -122,7 +122,6 @@ python server/mcp_server.py streamable-http
 
 **返回值**:
 - `total`: 总数
-- `resultList`: 结果列表
 - 其他企业相关信息
 
 ### 2. store_bigdata_company_restaurant_branches
@@ -174,7 +173,6 @@ python server/mcp_server.py streamable-http
 
 **返回值**:
 - `total`: 总数
-- `resultList`: 结果列表
   - `ooStoreId`: 店铺id
   - `hasContact`: 有无联系方式 - 1：有，0：无
   - `contactNumber`: 联系方式数量
